@@ -17,6 +17,7 @@ export type CounterInterfacePropsType = {
     disabledValue: boolean
     editMode: boolean
     setEditMode: (value:boolean) => void
+    logicInput: boolean
 }
 
 export const CounterInterface:FC<CounterInterfacePropsType> = (
@@ -28,14 +29,23 @@ export const CounterInterface:FC<CounterInterfacePropsType> = (
         setMaxValue,
         disabledValue,
         editMode,
-        setEditMode
+        setEditMode,
+        logicInput
     }
 ) => {
 
     useEffect(() => {
-        localStorage.setItem(values.maxCounterValue, JSON.stringify(maxValue))
-        localStorage.setItem(values.startCounterValue, JSON.stringify(startValue))
+        let maxCounterAsString = localStorage.getItem(values.maxCounterValue)
+        let startCounterAsString = localStorage.getItem(values.startCounterValue)
+        if(maxCounterAsString && startCounterAsString) {
+            let newMaxValue = JSON.parse(maxCounterAsString)
+            let newStartValue = JSON.parse(startCounterAsString)
+            setMaxValue(newMaxValue)
+            setStartValue(newStartValue)
+        }
     }, [])
+
+
 
 
     const onChangeStartValueHandler = (e:ChangeEvent<HTMLInputElement>) => {
@@ -55,18 +65,16 @@ export const CounterInterface:FC<CounterInterfacePropsType> = (
         setEditMode(false)
     }
 
-    const logicCorrectInput = maxValue < 0 || startValue < 0 || startValue > maxValue || maxValue === startValue
-
     return (
         <div className={s.container}>
             <div className={s.values}>
                 <div className={s.maxValue}>
                     <span>max value</span>
-                    <SuperInputText  className={logicCorrectInput ? s.inputStyleRed : s.inputStyle} type={'number'} value={maxValue} onChange={onChangeMaxValueHandler}/>
+                    <SuperInputText  className={logicInput ? s.inputStyleRed : s.inputStyle} type={'number'} value={maxValue} onChange={onChangeMaxValueHandler}/>
                 </div>
                 <div className={s.startValue}>
                     <span>start value</span>
-                    <SuperInputText className={logicCorrectInput ? s.inputStyleRed : s.inputStyle} type={'number'} value={startValue} onChange={onChangeStartValueHandler}/>
+                    <SuperInputText className={logicInput ? s.inputStyleRed : s.inputStyle} type={'number'} value={startValue} onChange={onChangeStartValueHandler}/>
                 </div>
             </div>
             <div className={s.button}>

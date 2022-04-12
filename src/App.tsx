@@ -18,7 +18,7 @@ function App() {
         setCounter(startValue)
     }
 
-    const logicCorrectInput = maxValue < 0 || startValue < 0 || startValue > maxValue || maxValue === startValue
+    const logicInput = maxValue < 0 || startValue < 0 || startValue > maxValue || maxValue === startValue
 
     return (
         <div className={s.grid}>
@@ -28,18 +28,19 @@ function App() {
                 setCounter={setCounter}
                 setMaxValue={setMaxValue}
                 setStartValue={setStartValue}
-                disabledValue={logicCorrectInput}
+                disabledValue={logicInput}
                 editMode={editMode}
                 setEditMode={setEditMode}
+                logicInput={logicInput}
             />
             <Counter
                 disabledValue={counter === maxValue}
                 counter={counter}
                 maxValue={maxValue}
-                startValue={startValue}
                 onIncrement={onIncrement}
                 onReset={onReset}
                 editMode={editMode}
+                logicInput={logicInput}
             />
         </div>
     );

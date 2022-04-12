@@ -1,15 +1,16 @@
 import React, {FC} from 'react';
 import {Button} from "@mui/material";
 import s from './Counter.module.css';
+import {IncorrectValueError} from "../IncorrectValueError/IncorrectValueError";
 
 export type CounterPropsType = {
     disabledValue: boolean
     counter: number
     maxValue: number
-    startValue: number
     onIncrement: () => void
     onReset: () => void
     editMode: boolean
+    logicInput: boolean
 }
 
 export const Counter:FC<CounterPropsType> = (
@@ -17,12 +18,13 @@ export const Counter:FC<CounterPropsType> = (
         disabledValue,
         counter,
         maxValue,
-        startValue,
         onIncrement,
         onReset,
-        editMode
+        editMode,
+        logicInput
     }
 ) => {
+
     const onIncrementHandler = () => {
         onIncrement()
     }
@@ -30,11 +32,10 @@ export const Counter:FC<CounterPropsType> = (
         onReset()
     }
 
-
     return (
         <div className={s.container}>
-            { (maxValue < 0 || startValue < 0 || startValue > maxValue || maxValue === startValue)
-                ? <div className={s.incorrect}>Incorrect value!</div>
+            { logicInput
+                ? <IncorrectValueError />
                 : editMode ? <div>Enter! Set value!</div>
                 : <div className={counter !== maxValue ? s.counter : s.counterRed}>{counter}</div>
             }
