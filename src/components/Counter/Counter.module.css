@@ -1,0 +1,53 @@
+.container {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    text-align: center;
+    align-items: center;
+    width: 350px;
+    height: 350px;
+    justify-self: start;
+
+    border: 3px solid black;
+    border-radius: 15px;
+    background: #b1c3bb;
+
+}
+
+.counter {
+    font-size: 5rem;
+    margin: 30px;
+    padding: 25px;
+    border: 3px solid black;
+    border-radius: 15px;
+    color: #8effa5;
+}
+
+.counterRed {
+    font-size: 5rem;
+    margin: 30px;
+    padding: 25px;
+    border: 5px solid #e36363;
+    border-radius: 15px;
+    color: #e36363;
+    background: black;
+}
+
+.incorrect {
+    font-weight: bold;
+    font-size: 2rem;
+    border: 5px solid #e36363;
+    border-radius: 15px;
+    color: #e36363;
+    margin: 30px;
+    padding: 35px;
+    background: white;
+}
+
+.buttons button{
+    margin: 5px;
+    width: 150px;
+}
+
+.button {
+    margin: 2px;
+}
