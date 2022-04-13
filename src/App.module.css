@@ -1,11 +1,23 @@
+.wrapper {
+  max-width: 1280px;
+  padding: 24px;
+  margin: 0 auto;
+}
+
 .grid {
   display: grid;
-  /*grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));*/
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   grid-template-rows: minmax(350px, auto);
-
+  justify-items: center;
+  justify-content: center;
   gap: 2rem;
 
   font-size: 1.5rem;
-  margin: 50px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    margin: 0;
+  }
 }

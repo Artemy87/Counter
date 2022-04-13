@@ -21,27 +21,29 @@ function App() {
     const logicInput = maxValue < 0 || startValue < 0 || startValue > maxValue || maxValue === startValue
 
     return (
-        <div className={s.grid}>
-            <CounterInterface
-                startValue={startValue}
-                maxValue={maxValue}
-                setCounter={setCounter}
-                setMaxValue={setMaxValue}
-                setStartValue={setStartValue}
-                disabledValue={logicInput}
-                editMode={editMode}
-                setEditMode={setEditMode}
-                logicInput={logicInput}
-            />
-            <Counter
-                disabledValue={counter === maxValue}
-                counter={counter}
-                maxValue={maxValue}
-                onIncrement={onIncrement}
-                onReset={onReset}
-                editMode={editMode}
-                logicInput={logicInput}
-            />
+        <div className={s.wrapper}>
+            <div className={s.grid}>
+                <CounterInterface
+                    startValue={startValue}
+                    maxValue={maxValue}
+                    setCounter={setCounter}
+                    setMaxValue={setMaxValue}
+                    setStartValue={setStartValue}
+                    disabledValue={logicInput}
+                    editMode={editMode}
+                    setEditMode={setEditMode}
+                    logicInput={logicInput}
+                />
+                <Counter
+                    disabledValue={counter === maxValue}
+                    counter={counter}
+                    maxValue={maxValue}
+                    onIncrement={onIncrement}
+                    onReset={onReset}
+                    editMode={editMode}
+                    logicInput={logicInput}
+                />
+            </div>
         </div>
     );
 }

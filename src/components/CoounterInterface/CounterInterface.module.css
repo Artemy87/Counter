@@ -3,7 +3,7 @@
     grid-template-rows: 2fr 1fr;
     width: 350px;
     height: 350px;
-    justify-self: end;
+    /*justify-self: end;*/
 
     text-align: center;
     align-items: center;
