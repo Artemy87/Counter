@@ -42,6 +42,7 @@ export const CounterInterface:FC<CounterInterfacePropsType> = (
             let newStartValue = JSON.parse(startCounterAsString)
             setMaxValue(newMaxValue)
             setStartValue(newStartValue)
+            setCounter(newStartValue)
         }
     }, [])
 
